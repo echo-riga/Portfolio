@@ -1,0 +1,30 @@
+import Link from "next/link";
+import Image from "next/image";
+import { ModalTrigger, PortfolioModals } from "@/components/portfolio-modals";
+import { portfolio, projects, experiences, education } from "@/lib/portfolio";
+import { getContributions } from "@/lib/github";
+import { GitHubGraph } from "@/components/github-graph";
+import { TechStack } from "@/components/tech-stack";
+import { CredentialList } from "@/components/credential-list";
+import { SocialIcon } from "@/components/social-icon";
+
+export const revalidate = 3600;
+
+export default async function Home() {
+  const activity = await getContributions();
+  return <PortfolioModals><a className="skip-link" href="#main">Skip to content</a><main id="main" className="dashboard">
+    <div className="overview-grid">
+      <section className="profile" aria-labelledby="profile-title">
+        <div className="profile-header"><div className="identity"><div className="profile-name"><h1 id="profile-title">{portfolio.name} <span className="profile-nickname">({portfolio.nickname})</span></h1><div className="profile-meta"><p className="role">{portfolio.role}</p><p className="location">{portfolio.location}</p><ModalTrigger className="profile-about" selection={{ type: "about" }}>About me</ModalTrigger></div></div></div><div className="profile-links" aria-label="Contact and social links"><a href={`https://github.com/${portfolio.githubUsername}`} target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" title="GitHub"><SocialIcon name="github" /></a>{portfolio.linkedinUrl ? <a href={portfolio.linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" title="LinkedIn"><SocialIcon name="linkedin" /></a> : <span className="inactive-social" role="img" aria-label="LinkedIn — not configured" title="LinkedIn — not configured"><SocialIcon name="linkedin" /></span>}<a href={`mailto:${portfolio.email}`} aria-label={`Email ${portfolio.name}`} title="Email"><SocialIcon name="email" /></a></div></div>
+      </section>
+      <section className="experience panel" aria-labelledby="experience-title"><div className="panel-heading"><h2 id="experience-title">Experience</h2></div><ol className="timeline">{experiences.map(experience => <li key={experience.role}><span className={`timeline-dot ${experience.period.includes("Present") ? "current" : ""}`} /><div className="timeline-top"><h3>{experience.role}</h3><span>{experience.period}</span></div>{experience.company && <p className="company">{experience.company}</p>}</li>)}</ol><div className="education"><h3>Education</h3><div className="timeline-top"><span className="education-role">{education.role}</span><span>{education.period}</span></div><p className="company">{education.school}</p></div></section>
+      <section className="activity panel" aria-labelledby="activity-title"><div className="panel-heading"><h2 id="activity-title">GitHub activity</h2><a className="quiet-link" href={`https://github.com/${portfolio.githubUsername}`} target="_blank" rel="noopener noreferrer">@{portfolio.githubUsername} ↗</a></div><GitHubGraph activity={activity} /></section>
+    </div>
+    <div className="work-grid">
+      <section className="projects panel" aria-labelledby="projects-title"><div className="panel-heading"><h2 id="projects-title">Projects <span className="heading-count">{String(projects.length).padStart(2, "0")}</span></h2><Link className="quiet-link" href="/projects">View full</Link></div><div className="home-project-list">{projects.slice(0, 2).map(project => <ModalTrigger key={project.slug} className={`home-project-row ${project.images.length ? "" : "home-project-row-text"}`} selection={{ type: "projects", slug: project.slug }} label={`View ${project.name} project`}>{project.images.length > 0 && <span className="home-project-preview">{project.images[0] && <Image src={project.images[0].src} alt={project.images[0].alt} fill sizes="(max-width: 780px) 112px, 170px" />}{project.images.length > 1 && <span className="home-image-count" aria-hidden="true">+{project.images.length - 1}</span>}</span>}<span className="home-project-copy"><span className="home-project-title">{project.name}</span><span className="home-project-description">{project.summary}</span><span className="home-project-tools">{project.tools.join(" / ")}</span></span><span className="home-project-arrow" aria-hidden="true">&#8599;</span></ModalTrigger>)}</div></section>
+      <section className="tech panel" aria-labelledby="tech-title"><div className="panel-heading"><h2 id="tech-title">Technologies</h2><ModalTrigger className="quiet-link" selection={{ type: "stack" }} label="View all technologies">View all</ModalTrigger></div><TechStack compact /></section>
+    </div>
+    <section className="credentials panel" aria-labelledby="credentials-title"><div className="credentials-heading"><h2 id="credentials-title">Certificates & Achievements</h2><ModalTrigger className="quiet-link" selection={{ type: "credentials" }} label="View all certificates and achievements">View all</ModalTrigger></div><CredentialList compact /></section>
+    <footer className="dashboard-footer"><span>© {new Date().getFullYear()} {portfolio.name}</span></footer>
+  </main></PortfolioModals>;
+}

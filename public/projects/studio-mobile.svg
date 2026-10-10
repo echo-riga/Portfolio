@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+<rect width="1200" height="720" fill="#233229"/><g font-family="Arial,sans-serif"><text x="110" y="286" font-size="43" font-weight="600" fill="#f0efe7">Small screen.</text><text x="110" y="340" font-size="43" font-weight="600" fill="#b9ccba">Same perspective.</text><text x="110" y="395" font-size="20" fill="#b9ccba">A responsive Studio concept.</text>
+<rect x="719" y="48" width="330" height="614" rx="35" fill="#101911" stroke="#69816b" stroke-width="3"/><rect x="734" y="64" width="300" height="582" rx="25" fill="#f0efe7"/><rect x="829" y="72" width="111" height="14" rx="7" fill="#101911"/>
+<text x="758" y="133" font-size="25" font-weight="700" fill="#28332a">studio.</text><path d="M991 112h20m-20 8h20" stroke="#28332a" stroke-width="2"/><path d="M758 158h251" stroke="#ced1c6"/>
+<g font-size="40" font-weight="600" fill="#283e2f"><text x="758" y="232">Good things.</text><text x="758" y="281">Made</text><text x="758" y="330">together.</text></g><text x="758" y="371" font-size="15" fill="#6b7265">Independent by design.</text>
+<rect x="758" y="397" width="160" height="42" rx="6" fill="#283e2f"/><text x="780" y="424" fill="#f0efe7" font-size="15">Explore our work</text><rect x="758" y="466" width="251" height="132" rx="8" fill="#dbe2d4"/><circle cx="846" cy="532" r="42" fill="#9bad8c"/><rect x="879" y="489" width="62" height="86" rx="31" fill="#56745b"/>
+<text x="110" y="638" font-size="14" fill="#b9ccba">SAMPLE PROJECT PREVIEW / MOBILE</text></g>
+</svg>
