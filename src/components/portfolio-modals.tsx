@@ -30,6 +30,7 @@ export function PortfolioModals({ children }: { children: ReactNode }) {
   const isOpen = selection !== null;
   const project = selection?.type === "projects" ? projects.find(item => item.slug === selection.slug) : undefined;
   const compact = selection?.type === "about" || (selection?.type === "projects" && project?.images.length === 0);
+  const collection = selection?.type === "stack" || selection?.type === "credentials";
   const title = project ? project.name : selection?.type === "stack" ? "Technologies" : selection?.type === "credentials" ? "Certificates & Achievements" : selection?.type === "about" ? "About me" : "Projects";
 
   useEffect(() => {
@@ -48,7 +49,7 @@ export function PortfolioModals({ children }: { children: ReactNode }) {
 
   return <ModalContext.Provider value={(next, opener) => { openerRef.current = opener; setSelection(next); }}>
     {children}
-    <dialog ref={dialogRef} className={`portfolio-modal ${compact ? "compact-modal" : ""}`} aria-labelledby="modal-title" onClose={event => { if (event.target !== event.currentTarget) return; setSelection(null); openerRef.current?.focus(); }} onClick={event => {
+    <dialog ref={dialogRef} className={`portfolio-modal ${compact ? "compact-modal" : ""} ${collection ? "collection-modal" : ""}`} aria-labelledby="modal-title" onClose={event => { if (event.target !== event.currentTarget) return; setSelection(null); openerRef.current?.focus(); }} onClick={event => {
       if (event.target !== event.currentTarget) return;
       const bounds = event.currentTarget.getBoundingClientRect();
       if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) event.currentTarget.close();
