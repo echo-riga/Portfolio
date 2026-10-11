@@ -1,11 +1,15 @@
 ---
 name: ui-design
-description: Create and refine interfaces for immediate understanding, familiar interaction patterns, concise content, and visual comfort.
+description: Create and refine application and system interfaces for immediate understanding, familiar interaction patterns, concise content, and visual comfort.
 ---
 
 # UI design
 
 Help people complete their task without learning the interface or understanding its implementation.
+
+This skill primarily suits product UI, applications, and systems such as dashboards, admin panels, and software tools, where efficient task completion is the main goal.
+
+For marketing websites and brand experiences, use these usability principles alongside project-specific guidance for brand identity, storytelling, visual expression, and purposeful motion. Preserve established brand character; do not interpret concise content, familiar patterns, or visual comfort as instructions to make a website plain or remove animation by default.
 
 Apply these principles within the current project's goals, audience, and constraints. They do not prescribe a framework, visual theme, navigation structure, or page layout.
 
