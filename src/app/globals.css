@@ -151,10 +151,10 @@ h3 { font-size: 15px; }
 .activity-summary { display: flex; align-items: baseline; gap: 7px; margin-bottom: 7px; }
 .activity-summary strong { font-size: 14px; font-weight: 600; }
 .activity-summary > span { font-size: 13px; color: var(--muted); }
-.graph-wrapper { width: 100%; }
+.graph-wrapper { width: 100%; container-type: inline-size; container-name: contributions; }
 .graph-months { display: grid; gap: 2px; font-size: 13px; color: var(--muted); height: 24px; align-items: start; }
 .graph-months > span { white-space: nowrap; grid-row: 1; }
-@media (max-width: 600px) {
+@container contributions (max-width: 440px) {
   .graph-month:nth-child(even) { display: none; }
 }
 .contribution-grid { display: grid; grid-auto-flow: column; grid-template-rows: repeat(7, 1fr); gap: 2px; }
@@ -380,6 +380,13 @@ nav { display: flex; align-items: center; gap: 25px; font-size: 14px; color: var
   .credentials { gap: 18px; }
   .credentials-list { gap: 14px; }
 }
+@media (min-width: 701px) and (max-width: 1099px) {
+  .profile { grid-column: 1 / -1; grid-row: 1; }
+  .activity { grid-column: 1; grid-row: 2; }
+  .experience { grid-column: 2; grid-row: 2; }
+  .dashboard .profile-header { flex-wrap: wrap; }
+  .dashboard .home-project-preview { flex-basis: 96px; }
+}
 @media (max-width: 700px) {
   .dashboard { gap: 20px; padding-top: 24px; }
   .dashboard .panel { padding: 20px; }
@@ -406,9 +413,13 @@ nav { display: flex; align-items: center; gap: 25px; font-size: 14px; color: var
   .all-projects .project-list { padding: 18px; }
   .stack-list .tech-grid { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width: 380px) {
+@media (max-width: 480px) {
   .dashboard .home-project-row { flex-direction: column; gap: 14px; padding: 14px; }
   .dashboard .home-project-preview { flex-basis: auto; width: 100%; }
+  .credentials-heading { align-items: flex-start; }
+  .credentials-heading .quiet-link { flex-shrink: 0; white-space: nowrap; }
+}
+@media (max-width: 380px) {
   .profile-header { gap: 10px; }
   .profile-header .avatar { display: none; }
   .profile-header h1 { font-size: 25px; }
