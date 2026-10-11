@@ -13,4 +13,4 @@ For this portfolio, prioritize a readable desktop overview: profile and contact 
 
 These preferences guide design choices; later explicit user instructions take precedence.
 
-Keep the homepage compact. Projects' "View full" opens `/projects`, where each row opens a project modal with 40% image space and 60% detail space. Clicking an image opens a larger image slider over that modal. Tech stack and credentials continue to use "View all" modals.
+Keep the homepage compact. Projects' "View all" opens `/projects`, where each row opens a project modal with 40% image space and 60% detail space. Clicking an image opens a larger image slider over that modal. Tech stack and credentials continue to use "View all" modals.

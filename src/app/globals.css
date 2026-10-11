@@ -31,7 +31,74 @@ h3 { font-size: 15px; }
 .skip-link:focus { top: 12px; }
 
 /* Profile and supporting information stay compact; work takes the most space. */
-.dashboard { width: min(100% - 64px, 1120px); min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; margin: 0 auto; padding: 24px 0 16px; gap: 18px; }
+.dashboard { width: min(100% - 64px, 1200px); min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; margin: 0 auto; padding: 18px 0 12px; gap: 14px; font-size: 16px; line-height: 1.35; }
+.dashboard h2 { font-size: 20px; line-height: 1.35; }
+.dashboard .quiet-link, .dashboard .profile-about { font-size: 15px; }
+.dashboard .role { font-size: 16px; }
+.dashboard .location { font-size: 15px; }
+.dashboard .profile-links > a, .dashboard .inactive-social { width: 40px; height: 40px; }
+.dashboard .panel { padding: 14px 20px; }
+.dashboard .panel-heading { margin-bottom: 12px; }
+.dashboard .experience .panel-heading { margin-bottom: 0; }
+.dashboard .timeline { margin-top: 12px; }
+.dashboard .timeline li { padding-bottom: 12px; }
+.dashboard .timeline li:last-child { padding-bottom: 0; }
+.dashboard .company { margin-top: 3px; }
+.dashboard .education { margin-top: 12px; padding-top: 10px; }
+.dashboard .education > h3 { margin-bottom: 6px; }
+.dashboard .timeline h3, .dashboard .education .education-role { font-size: 16px; }
+.dashboard .timeline-top > span, .dashboard .company { font-size: 14px; }
+.dashboard .education > h3 { font-size: 14px; }
+.dashboard .activity { padding: 12px 16px; }
+.dashboard .activity h2 { font-size: 16px; }
+.dashboard .activity .panel-heading { margin-bottom: 10px; }
+.dashboard .activity-summary strong { font-size: 16px; }
+.dashboard .activity-summary > span { font-size: 14px; }
+.dashboard .home-project-title { font-size: 19px; }
+.dashboard .home-project-description { font-size: 16px; color: #d0d4da; }
+.dashboard .home-project-tools { font-size: 14px; color: #b6bcc5; }
+.dashboard .home-project-preview { flex-basis: 136px; }
+.dashboard .work-grid { flex: none; min-height: 0; align-items: stretch; }
+.dashboard .tech { align-self: stretch; min-height: 0; }
+.dashboard .dashboard-footer { margin-top: auto; }
+.dashboard .tech-sections { flex: none; align-content: start; gap: 18px; }
+.dashboard .tech-section + .tech-section { padding-top: 18px; border-top: 1px solid var(--line); }
+.dashboard .tech-section h3 { font-size: 16px; color: #d0d4da; margin-bottom: 8px; }
+.dashboard .tech-tags li { font-size: 16px; padding: 6px 10px; }
+.dashboard .credentials { gap: 10px; }
+.dashboard .credential p { margin-top: 4px; }
+.dashboard .credential h3 { font-size: 17px; line-height: 1.5; }
+.dashboard .credentials-heading h2 { font-size: 20px; }
+.dashboard .credential p { font-size: 15px; }
+@media (min-width: 1100px) and (min-height: 740px) {
+  .dashboard { height: 100vh; height: 100svh; min-height: 0; }
+  .dashboard .work-grid { flex: 1; }
+  .dashboard .home-project-preview { flex-basis: clamp(136px, 15vw, 180px); }
+  .dashboard .tech-sections { flex: 1; grid-template-rows: repeat(3, 1fr); align-content: stretch; gap: 0; }
+  .dashboard .tech-section { display: flex; flex-direction: column; justify-content: center; padding-block: 12px; }
+  .dashboard .tech-section + .tech-section { padding-top: 12px; }
+}
+@media (min-width: 1100px) and (min-height: 740px) and (max-height: 880px) {
+  .dashboard { padding-block: 10px; gap: 10px; }
+  .dashboard .panel { padding: 12px 18px; }
+  .dashboard .panel-heading { margin-bottom: 8px; }
+  .dashboard .experience .panel-heading { margin-bottom: 0; }
+  .dashboard .timeline { margin-top: 10px; }
+  .dashboard .timeline li { padding-bottom: 10px; }
+  .dashboard .timeline li:last-child { padding-bottom: 0; }
+  .dashboard .education { display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 4px 12px; }
+  .dashboard .education > h3 { margin-bottom: 0; }
+  .dashboard .education .company { grid-column: 2; margin-top: 0; }
+  .dashboard .home-project-row { padding: 10px; gap: 12px; }
+  .dashboard .home-project-preview { flex-basis: 140px; }
+  .dashboard .home-project-list { gap: 10px; }
+  .dashboard .home-project-copy { gap: 5px; }
+  .dashboard .home-project-tools { display: none; }
+  .dashboard .tech-section { padding-block: 8px; }
+  .dashboard .tech-section + .tech-section { padding-top: 8px; }
+  .dashboard .tech-tags li { padding-block: 5px; }
+  .dashboard .credentials { gap: 6px; }
+}
 .overview-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 14px 20px; flex-shrink: 0; }
 .profile { grid-column: 1; grid-row: 1; }
 .profile-header { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 72px; }
@@ -84,11 +151,21 @@ h3 { font-size: 15px; }
 .activity-summary { display: flex; align-items: baseline; gap: 7px; margin-bottom: 7px; }
 .activity-summary strong { font-size: 14px; font-weight: 600; }
 .activity-summary > span { font-size: 13px; color: var(--muted); }
-.graph-wrapper { width: 100%; max-width: 440px; padding-right: 15px; }
-.graph-months { display: grid; font-size: 13px; color: var(--muted); height: 20px; }
-.graph-months > span { white-space: nowrap; }
+.graph-wrapper { width: 100%; }
+.graph-months { display: grid; gap: 2px; font-size: 13px; color: var(--muted); height: 24px; align-items: start; }
+.graph-months > span { white-space: nowrap; grid-row: 1; }
+@media (max-width: 600px) {
+  .graph-month:nth-child(even) { display: none; }
+}
 .contribution-grid { display: grid; grid-auto-flow: column; grid-template-rows: repeat(7, 1fr); gap: 2px; }
 .contribution-cell { aspect-ratio: 1; border-radius: 1.5px; min-width: 0; }
+.contribution-calendar { position: relative; }
+.contribution-grid:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.contribution-cell[data-active="true"] { outline: 2px solid var(--text); outline-offset: 1px; }
+.contribution-tooltip { position: absolute; top: 0; z-index: 2; transform: translate(-50%, calc(-100% - 8px)); width: 220px; max-width: 100%; display: grid; gap: 4px; padding: 10px 14px; border: 1px solid #424b45; border-radius: 7px; background: #202327; color: var(--text); font-size: 14px; line-height: 1.4; box-shadow: 0 6px 20px #0006; }
+.contribution-tooltip strong { font-weight: 600; }
+.contribution-tooltip::after { content: ""; position: absolute; inset: 100% 0 auto; height: 8px; }
+.contribution-tooltip > span { color: var(--muted); }
 .level-0 { background: #2b2e31; }
 .level-1 { background: #2b4836; }
 .level-2 { background: #41654a; }
@@ -102,7 +179,7 @@ h3 { font-size: 15px; }
 .graph-legend i { width: 8px; height: 8px; border-radius: 1px; }
 .activity-unavailable { color: var(--muted); line-height: 1.6; }
 
-.work-grid { flex: 1; display: grid; grid-template-columns: 1.1fr .9fr; gap: 20px; min-height: 240px; }
+.work-grid { flex: 1; display: grid; grid-template-columns: 1.15fr .85fr; gap: 20px; min-height: 240px; }
 .projects, .tech { display: flex; flex-direction: column; }
 .project-list { flex: 1; display: flex; flex-direction: column; justify-content: space-around; }
 .project-row { display: flex; align-items: center; gap: 14px; padding: 14px 0; }
@@ -282,11 +359,7 @@ nav { display: flex; align-items: center; gap: 25px; font-size: 14px; color: var
 }
 
 @media (min-width: 901px) and (max-height: 780px) {
-  .dashboard { padding-top: 18px; gap: 14px; }
-  .panel { padding: 16px 18px; }
-  .activity { padding: 10px 14px; }
   .work-grid { min-height: 230px; }
-  .credentials { padding-block: 18px; }
   .timeline { margin-top: 17px; }
   .timeline li { padding-bottom: 17px; }
 }
@@ -309,6 +382,10 @@ nav { display: flex; align-items: center; gap: 25px; font-size: 14px; color: var
 }
 @media (max-width: 700px) {
   .dashboard { gap: 20px; padding-top: 24px; }
+  .dashboard .panel { padding: 20px; }
+  .dashboard .profile-header { flex-wrap: wrap; }
+  .dashboard .home-project-row { align-items: flex-start; }
+  .dashboard .home-project-preview { flex-basis: 104px; }
   .overview-grid { grid-template-columns: 1fr; gap: 20px; }
   .profile { grid-column: 1; grid-row: 1; }
   .activity { grid-column: 1; grid-row: 2; }
@@ -330,6 +407,8 @@ nav { display: flex; align-items: center; gap: 25px; font-size: 14px; color: var
   .stack-list .tech-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 380px) {
+  .dashboard .home-project-row { flex-direction: column; gap: 14px; padding: 14px; }
+  .dashboard .home-project-preview { flex-basis: auto; width: 100%; }
   .profile-header { gap: 10px; }
   .profile-header .avatar { display: none; }
   .profile-header h1 { font-size: 25px; }

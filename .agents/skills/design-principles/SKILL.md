@@ -24,7 +24,7 @@ Keep those public skills self-contained and reusable across projects. Do not cop
 ## Layout and navigation
 
 - Keep a readable desktop overview with the footer at the bottom where practical. Allow scrolling on narrow screens, short viewports, zoomed views, or longer content instead of shrinking text or clipping content.
-- Projects' View full opens /projects. Each collection row opens a project dialog; projects with screenshots use roughly 40% image space and 60% detail space. Image clicks open a larger slider with Back and Next controls.
+- Projects' View all opens /projects. Each collection row opens a project dialog; projects with screenshots use roughly 40% image space and 60% detail space. Image clicks open a larger slider with Back and Next controls.
 - Tech stack and credentials use View all dialogs. Apply the shared dialog accessibility and sizing guidance; short content should not inherit a full-height layout.
 - Closing the image viewer returns focus to its image control; closing a project returns focus to its opener.
 
