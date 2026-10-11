@@ -104,36 +104,20 @@ export const projects = [
     "theme": "loxon",
     "images": [
     {
-        "src": "/projects/loxon-home.png",
+        "src": "/projects/loxon-homepage.png",
         "alt": "Loxon public website homepage"
     },
     {
-        "src": "/projects/loxon-projects-content.png",
-        "alt": "Loxon project listings"
+        "src": "/projects/loxon-project-detail.png",
+        "alt": "Loxon public website project details for Marco Polo Hotel"
     },
     {
-        "src": "/projects/loxon-services-content.png",
-        "alt": "Loxon products and services"
+        "src": "/projects/loxon-admin-projects.png",
+        "alt": "Loxon admin project management with search, filters, ordering, and editing controls"
     },
     {
-        "src": "/projects/loxon-careers-content.png",
-        "alt": "Loxon careers and job listings"
-    },
-    {
-        "src": "/projects/loxon-company-content.png",
-        "alt": "Loxon company overview"
-    },
-    {
-        "src": "/projects/loxon-membership-content.png",
-        "alt": "Loxon company memberships"
-    },
-    {
-        "src": "/projects/loxon-contact-content.png",
-        "alt": "Loxon contact page"
-    },
-    {
-        "src": "/projects/loxon-admin.svg",
-        "alt": "Loxon admin dashboard placeholder preview"
+        "src": "/projects/loxon-admin-submissions.png",
+        "alt": "Loxon admin contact submissions with private details blurred"
     }
 ],
     "description": "A public website and separate admin platform for Loxon Philippines, Inc., an engineering and construction company.",
@@ -176,6 +160,112 @@ export const projects = [
     "Agent skills"
   ],
   "features": [],
+  "approach": "",
+  "liveUrl": "",
+  "sourceUrl": "",
+  "sourceIsExample": false
+},
+{
+  "slug": "job-recommendation-model",
+  "name": "Job Recommendation Model",
+  "summary": "Decision tree job recommendations based on skill ratings.",
+  "category": "Machine learning",
+  "year": "2025",
+  "theme": "skills",
+  "images": [] as { src: string; alt: string }[],
+  "description": "A Python decision tree model that ranks job recommendations based on 15 skill ratings.",
+  "brief": "Full project details will be added later.",
+  "tools": ["Python", "pandas", "NumPy", "scikit-learn", "joblib"],
+  "features": ["Top five job recommendations ranked by model probability"],
+  "approach": "",
+  "liveUrl": "",
+  "sourceUrl": "",
+  "sourceIsExample": false
+},
+{
+  "slug": "faculty-consultation-system",
+  "name": "Faculty Consultation System",
+  "summary": "A faculty consultation system for a college department.",
+  "category": "Academic system",
+  "year": "2025",
+  "theme": "skills",
+  "images": [] as { src: string; alt: string }[],
+  "description": "A faculty consultation system for a college department.",
+  "brief": "Full project details will be added later.",
+  "tools": [] as string[],
+  "features": [] as string[],
+  "approach": "",
+  "liveUrl": "",
+  "sourceUrl": "",
+  "sourceIsExample": false
+},
+{
+  "slug": "compliance-face-recognition",
+  "name": "Compliance System Face Recognition",
+  "summary": "Face registration and recognition for compliance system users.",
+  "category": "Machine learning contribution",
+  "year": "2026",
+  "theme": "skills",
+  "images": [] as { src: string; alt: string }[],
+  "description": "Contributed a Python face recognition API for user registration and identification within a compliance system.",
+  "brief": "Full contribution details will be added later.",
+  "tools": ["Python", "Flask", "DeepFace", "OpenCV", "NumPy", "MySQL"],
+  "features": [
+    "Face-based user identification",
+    "Registration and updates of stored face data",
+    "Checks for faces already registered to another account"
+  ],
+  "approach": "Integrated DeepFace's ArcFace model with MTCNN detection in a Flask API. The API averages face embeddings from multiple image frames, stores them in MySQL, and compares them using cosine similarity to find a matching user.",
+  "liveUrl": "",
+  "sourceUrl": "",
+  "sourceIsExample": false
+},
+{
+  "slug": "printing-services-pos",
+  "name": "Printing Services POS",
+  "summary": "A tablet-based point-of-sale system for a printing services client.",
+  "category": "Freelance project",
+  "year": "2026",
+  "theme": "skills",
+  "images": [] as { src: string; alt: string }[],
+  "description": "A tablet-based point-of-sale system built for a freelance client offering printing services.",
+  "brief": "Full project details will be added later.",
+  "tools": [] as string[],
+  "features": [] as string[],
+  "approach": "",
+  "liveUrl": "",
+  "sourceUrl": "",
+  "sourceIsExample": false
+},
+{
+  "slug": "clinic-system",
+  "name": "Clinic System",
+  "summary": "A clinic system.",
+  "category": "Healthcare system",
+  "year": "2026",
+  "theme": "skills",
+  "images": [] as { src: string; alt: string }[],
+  "description": "A clinic system. Full project details will be added later.",
+  "brief": "",
+  "tools": [] as string[],
+  "features": [] as string[],
+  "approach": "",
+  "liveUrl": "",
+  "sourceUrl": "",
+  "sourceIsExample": false
+},
+{
+  "slug": "worktrace",
+  "name": "WorkTrace",
+  "summary": "Assignment, location, and workflow tracking for engineers and supervisors.",
+  "category": "Workforce management system",
+  "year": "2026",
+  "theme": "skills",
+  "images": [] as { src: string; alt: string }[],
+  "description": "A system for engineers and supervisors to track assignments and locations and manage workflows.",
+  "brief": "Full project details will be added later.",
+  "tools": [] as string[],
+  "features": [] as string[],
   "approach": "",
   "liveUrl": "",
   "sourceUrl": "",
