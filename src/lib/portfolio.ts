@@ -1,7 +1,6 @@
 // Replace these sample values with your own details before publishing.
 export const portfolio = {
   name: "Jericho Riga",
-  nickname: "echo",
   initials: "JR",
   role: "Full Stack Developer",
   location: "Pasig, Philippines",
