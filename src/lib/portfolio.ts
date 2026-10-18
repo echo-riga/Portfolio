@@ -109,8 +109,8 @@ export const projects = [
       "In-app and email notifications, audit logs, record archiving, and OAuth-secured MCP access for external AI apps"
     ],
     "approach": "Built with Next.js, TypeScript, MUI, PostgreSQL, and Drizzle ORM. Neon Auth and server-side role checks protect portal actions and MCP tools, while Google Drive and Forms use OAuth 2.0. An IndexedDB-backed queue handles resumable uploads with retry and recovery. Gemini powers grounded assistance and activity-design extraction, while Groq summarizes written evaluation feedback.",
-    "liveUrl": "",
-    "sourceUrl": "",
+    "liveUrl": "https://leaprs-v2.vercel.app",
+    "sourceUrl": "https://github.com/echo-riga/LEAPRSv2",
     "sourceIsExample": false
   },
   {
@@ -160,7 +160,7 @@ export const projects = [
     ],
     "approach": "Built as two Next.js applications: the public website and an admin app backed by PostgreSQL. The website consumes content from the admin API. Signed Cloudinary uploads send images directly from the browser, while Resend delivers inquiry and application notifications. Upstash Redis applies rate limits to forms, login, and uploads. Public content responses use a short CDN cache, and admin requests bypass it to show current edits.",
     "liveUrl": "https://new.loxon.com.ph",
-    "sourceUrl": "",
+    "sourceUrl": "https://github.com/echo-riga/Loxon-Website",
     "sourceIsExample": false
   },
 {
@@ -203,16 +203,34 @@ export const projects = [
 {
   "slug": "faculty-consultation-system",
   "name": "Faculty Consultation System",
-  "summary": "A faculty consultation system for a college department.",
-  "category": "Academic system",
+  "summary": "QR-assisted student consultations, records, and departmental reporting.",
+  "category": "Consultation & monitoring system",
   "year": "2025",
   "theme": "skills",
   "images": [] as { src: string; alt: string }[],
-  "description": "A faculty consultation system for a college department.",
-  "brief": "Full project details will be added later.",
-  "tools": [] as string[],
-  "features": [] as string[],
-  "approach": "",
+  "description": "A desktop system for recording student-faculty consultations, managing academic records, and monitoring consultation activity for a college department.",
+  "brief": "Students and faculty can use QR codes for faster access, while administrators manage records, review consultation history, and generate departmental reports.",
+  "tools": [
+    "VB.NET",
+    ".NET Framework",
+    "Windows Forms",
+    "SQLite",
+    "Next.js",
+    "TypeScript",
+    "PostgreSQL",
+    "Drizzle ORM",
+    "Neon"
+  ],
+  "features": [
+    "QR-based access for students, professors, and administrators, with QR delivery by email",
+    "Consultation logging with professor, reason, notes, date, time in, and time out",
+    "Student, professor, administrator, section, and consultation-reason management",
+    "Searchable consultation histories and dashboards with daily, monthly, and professor activity charts",
+    "Date-filtered PDF reports with consultation totals and reason breakdowns",
+    "Student promotion, graduation, archiving, and record restoration workflows",
+    "Bidirectional synchronization between local SQLite records and a cloud PostgreSQL database"
+  ],
+  "approach": "Built as a VB.NET Windows Forms application backed by a local SQLite database. QRCoder generates login codes, while PDFsharp produces consultation reports. A companion Next.js API uses TypeScript, Drizzle ORM, and Neon PostgreSQL to synchronize records across desktop clients, including incremental updates and deleted-record tracking.",
   "liveUrl": "",
   "sourceUrl": "",
   "sourceIsExample": false
@@ -241,16 +259,33 @@ export const projects = [
 {
   "slug": "printing-services-pos",
   "name": "Printing Services POS",
-  "summary": "A tablet-based point-of-sale system for a printing services client.",
-  "category": "Freelance project",
+  "summary": "Tablet checkout, sales monitoring, and expense tracking for a print shop.",
+  "category": "Tablet point-of-sale",
   "year": "2026",
   "theme": "skills",
-  "images": [] as { src: string; alt: string }[],
-  "description": "A tablet-based point-of-sale system built for a freelance client offering printing services.",
-  "brief": "Full project details will be added later.",
-  "tools": [] as string[],
-  "features": [] as string[],
-  "approach": "",
+  "images": [
+    {
+      "src": "/projects/pos-order.png",
+      "alt": "Printing Services POS order screen with service categories, custom pricing, and a shopping cart"
+    },
+    {
+      "src": "/projects/pos-checkout.png",
+      "alt": "Printing Services POS checkout screen with cash entry, payment options, and amount due"
+    }
+  ],
+  "description": "A fully offline tablet point-of-sale system built for a printing services client to price custom jobs, process payments, and monitor business performance.",
+  "brief": "Cashiers browse print-service categories, enter the quantity and unit price for each job, complete checkout, and review detailed transaction records.",
+  "tools": ["React Native", "Expo", "TypeScript", "React Native Paper", "Expo SQLite", "Zustand"],
+  "features": [
+    "Touch-friendly ordering with category, subcategory, and product tiles",
+    "Custom quantity and unit pricing for variable-cost printing services",
+    "Cash and configurable payment methods with change calculation and optional reference numbers",
+    "Product management and item-level transaction history with date filters",
+    "Revenue, orders, daily sales, top items, and payment breakdown analytics",
+    "Expense tracking with daily records, date filters, and net profit calculations",
+    "PIN-protected dashboard access and local JSON backup and restore"
+  ],
+  "approach": "Built as a fully offline Expo and React Native tablet application with React Native Paper. Expo SQLite stores products, payment methods, transactions, line items, and expenses on the device, while Zustand manages cart state. Responsive layouts support portrait and landscape tablets, and native file sharing handles full JSON backups and restoration.",
   "liveUrl": "",
   "sourceUrl": "",
   "sourceIsExample": false
