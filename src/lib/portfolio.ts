@@ -308,18 +308,55 @@ export const projects = [
 {
   "slug": "worktrace",
   "name": "WorkTrace",
-  "summary": "Assignment, location, and workflow tracking for engineers and supervisors.",
-  "category": "Workforce management system",
+  "summary": "Field-service requests, live locations, and completion tracking.",
+  "category": "Mobile workforce management",
   "year": "2026",
   "theme": "skills",
-  "images": [] as { src: string; alt: string }[],
-  "description": "A system for engineers and supervisors to track assignments and locations and manage workflows.",
-  "brief": "Full project details will be added later.",
-  "tools": [] as string[],
-  "features": [] as string[],
-  "approach": "",
+  "images": [
+    {
+      "src": "/projects/admin overview.png",
+      "alt": "WorkTrace admin overview showing request statuses, recent requests, and completion-time groups"
+    },
+    {
+      "src": "/projects/admin teams.png",
+      "alt": "WorkTrace admin teams screen showing team cards and member counts"
+    },
+    {
+      "src": "/projects/supervisor view.png",
+      "alt": "WorkTrace supervisor view showing an active engineer, job timing, live location, and signature status"
+    },
+    {
+      "src": "/projects/engineer work.png",
+      "alt": "WorkTrace engineer job screen showing client feedback ratings, signature options, and the finish job action"
+    }
+  ],
+  "description": "A role-based mobile workforce app that manages field-service requests from assignment through on-site completion and supervisor verification.",
+  "brief": "Admins organize teams and monitor request activity. Supervisors approve work, follow active engineers, and verify completed jobs. Engineers create or accept requests, share their live location, collect client feedback and signatures, and submit completed work.",
+  "tools": [
+    "React Native",
+    "Expo",
+    "TypeScript",
+    "Expo Router",
+    "React Native Paper",
+    "Socket.io",
+    "React Native Maps",
+    "Google Maps API",
+    "AsyncStorage",
+    "Cloudinary"
+  ],
+  "features": [
+    "Role-specific workspaces for administrators, supervisors, and engineers",
+    "Team and user management with separate supervisor and engineer assignments",
+    "Request creation, approval, rejection, assignment, and status history",
+    "Live engineer location updates with supervisor map monitoring",
+    "Client feedback ratings and drawn, photographed, or uploaded signatures",
+    "Supervisor review and verification of completed jobs",
+    "Searchable work records with status and date filters",
+    "Offline completion drafts and queued submissions that sync after reconnection"
+  ],
+  "approach": "Built with Expo, React Native, TypeScript, Expo Router, and React Native Paper. Authenticated REST endpoints support the role-based workflows, while Socket.io and Expo Location publish active engineer coordinates to supervisor maps rendered with React Native Maps and the Google Maps API. AsyncStorage preserves sessions, completion drafts, and an offline submission queue; Cloudinary stores request attachments and signature images.",
   "liveUrl": "",
-  "sourceUrl": "",
+  "sourceUrl": "https://github.com/echo-riga/WorkTrace",
   "sourceIsExample": false
 }
 ];
