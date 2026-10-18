@@ -34,7 +34,7 @@ h3 { font-size: 15px; }
 /* Profile and supporting information stay compact; work takes the most space. */
 .dashboard { width: min(100% - 64px, 1200px); min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; margin: 0 auto; padding: 18px 0 12px; gap: 14px; font-size: 16px; line-height: 1.35; }
 .dashboard h2 { font-size: 20px; line-height: 1.35; }
-.dashboard .quiet-link, .dashboard .profile-about { font-size: 15px; }
+.dashboard .quiet-link { font-size: 15px; }
 .dashboard .role { font-size: 16px; }
 .dashboard .location { font-size: 15px; }
 .dashboard .profile-links > a, .dashboard .inactive-social { width: 40px; height: 40px; }
@@ -105,20 +105,8 @@ h3 { font-size: 15px; }
 .profile-header { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 72px; }
 .identity { display: flex; align-items: center; gap: 16px; }
 .profile-name { min-width: 0; }
-.profile-about { padding: 3px 0; border: 0; background: transparent; color: var(--muted); font-size: 13px; font-weight: 500; text-decoration: underline; text-underline-offset: 4px; }
-.profile-about:hover { color: var(--accent); }
 .portfolio-modal.compact-modal { width: min(640px, calc(100% - 24px)); height: fit-content; min-height: 0; max-height: calc(100svh - 48px); margin: auto; }
-.about-content { padding: 4px 8px 16px; }
-.about-intro { font-size: 20px; line-height: 1.6; max-width: 760px; color: var(--text); }
-.about-transition { margin-top: 14px; font-size: 15px; line-height: 1.7; color: var(--muted); }
-.about-project-link { margin-top: 22px; cursor: pointer; }
 .skills-md-content .project-actions { margin-top: 28px; }
-.about-principles { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 30px; }
-.about-principles h3 { font-size: 19px; margin-bottom: 18px; }
-.about-principles ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; }
-.about-principles li { font-size: 15px; line-height: 1.7; color: var(--muted); }
-.about-principles strong { color: var(--text); font-weight: 600; }
-@media (max-width: 700px) { .about-principles { grid-template-columns: 1fr; gap: 28px; } .about-content { padding-inline: 0; } }
 .profile-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; margin-top: 9px; }
 .avatar { width: 54px; height: 54px; flex-shrink: 0; border: 1px solid #3b3e42; background: #232629; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #d8dcdf; font-size: 19px; font-weight: 550; }
 .role { font-size: 15px; color: #c6cad1; font-weight: 500; }

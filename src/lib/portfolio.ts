@@ -9,8 +9,6 @@ export const portfolio = {
   linkedinUrl: "https://www.linkedin.com/in/jericho-riga-800160395/",
   headline: "Thoughtful design.\nPurposeful code.",
   introduction: "Full Stack Developer portfolio — projects, experience, and technical skills.",
-  about: "I’m a designer and developer who enjoys making the complex feel simple. I work at the intersection of thoughtful interfaces and well-crafted code, building things that are useful, approachable, and a pleasure to use.",
-  aboutMore: "Outside of the screen, you’ll usually find me exploring new places, collecting inspiration, or working on a small side project. This is a starter portfolio — make this story your own.",
   socialLinks: [] as { label: string; href: string }[],
 };
 
@@ -30,10 +28,10 @@ export const credentials = [
 export const experiences = [
   { role: "Software Engineer Intern", company: "UnQue", period: "2026" },
   { role: "Web Developer (Contract)", company: "Loxon Philippines Inc.", period: "2026" },
-  { role: "Freelance Software Developer", company: "", period: "2024 — 2025" },
+  { role: "Freelance Software Developer", company: "", period: "2025" },
 ];
 
-export const education = { role: "Student", school: "Pamantasan ng Lungsod ng Pasig", period: "2023 — Present" };
+export const education = { role: "Student", school: "Pamantasan ng Lungsod ng Pasig", period: "Present" };
 
 export const techGroups = [
   { name: "Languages", skills: ["TypeScript", "JavaScript", "Python", "Java", "SQL"] },

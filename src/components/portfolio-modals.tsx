@@ -6,10 +6,9 @@ import { projects } from "@/lib/portfolio";
 import { TechStack } from "./tech-stack";
 import { CredentialList } from "./credential-list";
 import { ProjectGallery } from "./project-gallery";
-import { AboutMe } from "./about-me";
 import { SkillsMD } from "./skills-md";
 
-type Selection = { type: "projects"; slug: string } | { type: "project-list" | "stack" | "credentials" | "about" };
+type Selection = { type: "projects"; slug: string } | { type: "project-list" | "stack" | "credentials" };
 const ModalContext = createContext<((selection: Selection, opener: HTMLButtonElement) => void) | null>(null);
 
 export function ModalTrigger({ selection, children, className, label }: { selection: Selection; children: ReactNode; className?: string; label?: string }) {
@@ -43,9 +42,9 @@ export function PortfolioModals({ children }: { children: ReactNode }) {
   const isOpen = selection !== null;
   const project = selection?.type === "projects" ? projects.find(item => item.slug === selection.slug) : undefined;
   const detailProject = projects.find(item => item.slug === detailSlug);
-  const compact = selection?.type === "about" || (selection?.type === "projects" && project?.images.length === 0);
+  const compact = selection?.type === "projects" && project?.images.length === 0;
   const collection = selection?.type === "project-list" || selection?.type === "stack" || selection?.type === "credentials";
-  const title = project ? project.name : selection?.type === "stack" ? "Technologies" : selection?.type === "credentials" ? "Certificates & Achievements" : selection?.type === "about" ? "About me" : "Projects";
+  const title = project ? project.name : selection?.type === "stack" ? "Technologies" : selection?.type === "credentials" ? "Certificates & Achievements" : "Projects";
 
   useEffect(() => {
     if (!isOpen) return;
@@ -81,7 +80,6 @@ export function PortfolioModals({ children }: { children: ReactNode }) {
         {selection.type === "projects" && project && <ProjectDetail project={project} />}
         {selection.type === "stack" && <TechStack />}
         {selection.type === "credentials" && <CredentialList />}
-        {selection.type === "about" && <AboutMe onViewSkills={() => setSelection({ type: "projects", slug: "skills-mds" })} />}
       </div></>}
     </dialog>
     <dialog ref={detailDialogRef} className={`portfolio-modal ${detailProject?.images.length === 0 ? "compact-modal" : ""}`} aria-labelledby="project-detail-title" onClose={event => { if (event.target !== event.currentTarget) return; setDetailSlug(null); detailOpenerRef.current?.focus(); }} onClick={event => {
