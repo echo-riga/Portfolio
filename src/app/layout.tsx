@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { portfolio } from "@/lib/portfolio";
 import { Analytics } from "@vercel/analytics/next";
+import { ThemeScript } from "@/components/theme-toggle";
 import "@fontsource-variable/inter";
 import "./globals.css";
 
@@ -11,7 +12,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head><ThemeScript /></head>
       <body>
         {children}
         <Analytics />

@@ -19,7 +19,7 @@ export function ModalTrigger({ selection, children, className, label }: { select
 
 function ProjectActions({ project }: { project: (typeof projects)[number] }) {
   if (!project.sourceUrl && !project.liveUrl) return null;
-  return <div className="project-actions">{project.sourceUrl && <a className="project-action" href={project.sourceUrl} target="_blank" rel="noopener noreferrer" title={project.sourceIsExample ? "Next.js framework repository — example link" : undefined}>{project.sourceIsExample ? "Example source code" : "View source code"}</a>}{project.liveUrl && <a className="project-action" href={project.liveUrl} target="_blank" rel="noopener noreferrer">Visit website</a>}</div>;
+  return <div className="project-actions">{project.sourceUrl && <a className="project-action" href={project.sourceUrl} target="_blank" rel="noopener noreferrer" data-tooltip={project.sourceIsExample ? "Next.js framework repository — example link" : undefined} data-tooltip-align="start">{project.sourceIsExample ? "Example source code" : "View source code"}</a>}{project.liveUrl && <a className="project-action" href={project.liveUrl} target="_blank" rel="noopener noreferrer">Visit website</a>}</div>;
 }
 
 function ProjectDetail({ project }: { project: (typeof projects)[number] }) {
@@ -27,7 +27,7 @@ function ProjectDetail({ project }: { project: (typeof projects)[number] }) {
 }
 
 function ProjectCollection({ onOpen }: { onOpen: (slug: string, opener: HTMLButtonElement) => void }) {
-  return <div className="modal-project-list">{projects.map(project => <button key={project.slug} type="button" className={`home-project-row ${project.images.length ? "" : "home-project-row-text"}`} aria-label={`View ${project.name} project details`} aria-haspopup="dialog" onClick={event => onOpen(project.slug, event.currentTarget)}>{project.images.length > 0 && <span className="home-project-preview"><Image src={project.images[0].src} alt={project.images[0].alt} fill sizes="(max-width: 480px) calc(100vw - 76px), (max-width: 700px) 120px, 170px" />{project.images.length > 1 && <span className="home-image-count" aria-hidden="true">+{project.images.length - 1}</span>}</span>}<span className="home-project-copy"><span className="home-project-title">{project.name}</span><span className="home-project-description">{project.summary}</span><span className="home-project-tools">{project.tools.slice(0, 3).join(" · ")}</span></span><span className="home-project-arrow" aria-hidden="true">&#8599;</span></button>)}</div>;
+  return <div className="modal-project-list">{projects.map(project => <button key={project.slug} type="button" className={`home-project-row ${project.images.length ? "" : "home-project-row-text"}`} aria-label={`View ${project.name} project details`} aria-haspopup="dialog" onClick={event => onOpen(project.slug, event.currentTarget)}>{project.images.length > 0 && <span className="home-project-preview"><Image src={project.images[0].src} alt={project.images[0].alt} fill sizes="(max-width: 480px) calc(100vw - 76px), (max-width: 700px) 120px, 170px" />{project.images.length > 1 && <span className="home-image-count" aria-hidden="true">+{project.images.length - 1}</span>}</span>}<span className="home-project-copy"><span className="home-project-title">{project.name}</span><span className="home-project-description">{project.summary}</span><span className="home-project-tools">{project.tools.slice(0, 3).join(" · ")}</span></span></button>)}</div>;
 }
 
 export function PortfolioModals({ children }: { children: ReactNode }) {
@@ -75,7 +75,7 @@ export function PortfolioModals({ children }: { children: ReactNode }) {
       const bounds = event.currentTarget.getBoundingClientRect();
       if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) event.currentTarget.close();
     }}>
-      {selection && <><div className="modal-header"><h2 ref={headingRef} id="modal-title" tabIndex={-1}>{title}</h2><button type="button" className="modal-close" aria-label="Close dialog" title="Close" onClick={() => dialogRef.current?.close()}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg></button></div><div className="modal-content">
+      {selection && <><div className="modal-header"><h2 ref={headingRef} id="modal-title" tabIndex={-1}>{title}</h2><button type="button" className="modal-close" aria-label="Close dialog" data-tooltip="Close" data-tooltip-align="end" onClick={() => dialogRef.current?.close()}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg></button></div><div className="modal-content">
         {selection.type === "project-list" && <ProjectCollection onOpen={(slug, opener) => { detailOpenerRef.current = opener; setDetailSlug(slug); }} />}
         {selection.type === "projects" && project && <ProjectDetail project={project} />}
         {selection.type === "stack" && <TechStack />}
@@ -87,7 +87,7 @@ export function PortfolioModals({ children }: { children: ReactNode }) {
       const bounds = event.currentTarget.getBoundingClientRect();
       if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) event.currentTarget.close();
     }}>
-      {detailProject && <><div className="modal-header"><h2 ref={detailHeadingRef} id="project-detail-title" tabIndex={-1}>{detailProject.name}</h2><button type="button" className="modal-close" aria-label="Close project details" title="Close" onClick={() => detailDialogRef.current?.close()}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg></button></div><div className="modal-content"><ProjectDetail project={detailProject} /></div></>}
+      {detailProject && <><div className="modal-header"><h2 ref={detailHeadingRef} id="project-detail-title" tabIndex={-1}>{detailProject.name}</h2><button type="button" className="modal-close" aria-label="Close project details" data-tooltip="Close" data-tooltip-align="end" onClick={() => detailDialogRef.current?.close()}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg></button></div><div className="modal-content"><ProjectDetail project={detailProject} /></div></>}
     </dialog>
   </ModalContext.Provider>;
 }
