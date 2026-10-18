@@ -51,26 +51,42 @@ export const projects = [
   {
     "slug": "leaprs",
     "name": "LEAPRS",
-    "summary": "University training requests, approvals, and reporting.",
-    "category": "Training requisition system",
+    "summary": "Capacity development requests, timelines, and budget monitoring.",
+    "category": "Training requisition & monitoring system",
     "year": "2026",
     "theme": "leaprs",
     "images": [
-    {
-        "src": "/projects/leaprs-dashboard.svg",
-        "alt": "LEAPRS dashboard placeholder preview"
-    },
-    {
-        "src": "/projects/leaprs-requests.svg",
-        "alt": "LEAPRS requests placeholder preview"
-    },
-    {
-        "src": "/projects/leaprs-reports.svg",
-        "alt": "LEAPRS reports placeholder preview"
-    }
-],
-    "description": "A university training requisition system that digitizes PPMP and AIP-based institutional training workflows.",
-    "brief": "Employees submit training requests, while authorized staff manage training plans, track request status, and review institutional reports.",
+      {
+        "src": "/projects/leaprs-capdev-projects.png",
+        "alt": "LEAPRS CapDev projects dashboard showing AIP codes and budget balances"
+      },
+      {
+        "src": "/projects/leaprs-requests.png",
+        "alt": "LEAPRS requests page showing In-House and External requests with statuses and inactivity reminders"
+      },
+      {
+        "src": "/projects/leaprs-request-timeline.png",
+        "alt": "LEAPRS request timeline showing approval milestones and a completed budget deduction"
+      },
+      {
+        "src": "/projects/leaprs-evaluation-summary.png",
+        "alt": "LEAPRS evaluation summary showing AI-summarized feedback and rating results"
+      },
+      {
+        "src": "/projects/leaprs-settings.png",
+        "alt": "LEAPRS settings dashboard for users, reports, notifications, and configurable forms"
+      },
+      {
+        "src": "/projects/leaprs-form-configuration.png",
+        "alt": "LEAPRS In-House activity design form configuration with reorderable custom fields"
+      },
+      {
+        "src": "/projects/leaprs-ai-app-connection.png",
+        "alt": "LEAPRS Connect to AI Apps dialog showing MCP setup instructions for ChatGPT"
+      }
+    ],
+    "description": "The Lifelong Education Advancement Program Requisition System (LEAPRS) manages AIP-linked Capacity Development projects, requests, progress, budgets, and institutional reporting.",
+    "brief": "Employees submit In-House or External requests, while authorized staff configure forms, manage CapDev projects, track progress and blockers, and review budgets and reports.",
     "tools": [
       "Next.js",
       "TypeScript",
@@ -78,18 +94,21 @@ export const projects = [
       "PostgreSQL",
       "Drizzle ORM",
       "Neon Auth",
+      "Gemini API",
+      "Groq API",
       "Google APIs",
       "MCP"
     ],
     "features": [
-      "Role-based access for employees and administrators",
-      "Training plans, requisitions, and request status timelines",
-      "Dashboards, analytics, reports, and Excel exports",
-      "Audit logs and email notifications",
-      "Google Drive attachments and Google Forms evaluations",
-      "MCP tools for AI app integration"
+      "Role-based workflows for administrators, employees, cross-department staff, and viewers",
+      "Configurable fields and layouts for CapDev projects, In-House and External requests, and status updates",
+      "Request timelines with milestones, blockers, responses, stop and resume controls, reopening, and inactivity reminders",
+      "Budget validation and one-time deductions, with analytics, PDF reports, and Excel monitoring exports",
+      "Gemini assistant for general guidance, live request and budget answers, and editable drafts from photos, files, or prompts",
+      "Resumable Google Drive attachments and In-House Google Forms evaluations with Groq-powered summaries",
+      "In-app and email notifications, audit logs, record archiving, and OAuth-secured MCP access for external AI apps"
     ],
-    "approach": "Built with Next.js and a PostgreSQL database accessed through Drizzle ORM. Neon Auth provides application sessions, while role-based checks control access to requests and tools. Google API access uses OAuth 2.0. A custom TypeScript upload queue persists tasks in IndexedDB and supports resumable Google Drive uploads with retries and exponential backoff. The MCP integration implements consent, authorization codes with PKCE, access tokens, and refresh tokens.",
+    "approach": "Built with Next.js, TypeScript, MUI, PostgreSQL, and Drizzle ORM. Neon Auth and server-side role checks protect portal actions and MCP tools, while Google Drive and Forms use OAuth 2.0. An IndexedDB-backed queue handles resumable uploads with retry and recovery. Gemini powers grounded assistance and activity-design extraction, while Groq summarizes written evaluation feedback.",
     "liveUrl": "",
     "sourceUrl": "",
     "sourceIsExample": false

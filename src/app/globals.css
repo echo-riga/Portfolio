@@ -210,6 +210,9 @@ h3 { font-size: 15px; }
 .home-project-tools { color: var(--muted); font-size: 13px; line-height: 1.5; }
 .home-project-arrow { align-self: flex-start; margin-top: 2px; color: var(--muted); font-size: 19px; }
 .home-project-row:hover .home-project-title, .home-project-row:hover .home-project-arrow { color: var(--accent); }
+.modal-project-list { display: grid; gap: 12px; }
+.modal-project-list .home-project-row { min-height: 126px; }
+.modal-project-list .home-project-preview { flex-basis: 170px; }
 @media (min-width: 901px) and (max-height: 780px) {
   .home-project-preview { flex-basis: 112px; }
   .home-project-row { gap: 12px; padding: 10px; }
@@ -506,3 +509,12 @@ nav { display: flex; align-items: center; gap: 25px; font-size: 14px; color: var
 
 /* Collections take only the height they need and scroll on shorter screens. */
 .portfolio-modal.collection-modal { width: min(880px, calc(100% - 24px)); height: auto; min-height: 0; max-height: calc(100svh - 48px); margin: auto; }
+.portfolio-modal.project-list-modal { height: calc(100svh - 48px); }
+@media (max-width: 700px) {
+  .modal-project-list .home-project-row { min-height: 0; }
+  .modal-project-list .home-project-preview { flex-basis: 120px; }
+}
+@media (max-width: 480px) {
+  .modal-project-list .home-project-row { flex-direction: column; align-items: stretch; gap: 14px; padding: 14px; }
+  .modal-project-list .home-project-preview { flex-basis: auto; width: 100%; }
+}

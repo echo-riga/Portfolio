@@ -1,0 +1,6 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "frontend-backend",
+  "version": "0.1.0",
+  "description": "Practical UI design and backend engineering guidance for building clear, reliable applications."
+}
