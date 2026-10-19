@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { ProjectVisual } from "./portfolio";
+import { ProjectPlaceholder } from "./project-placeholder";
 
 type GalleryProps = { name: string; theme: string; images: { src: string; alt: string }[] };
 
@@ -32,7 +33,7 @@ export function ProjectGallery({ name, theme, images }: GalleryProps) {
 
   return <>
     <div className="project-image-panel">
-      {images.length ? <><button className="gallery-cover" type="button" aria-label={`Enlarge ${images[0].alt}`} onClick={event => openImage(0, event.currentTarget)}><ProjectVisual theme={theme} image={images[0]} /><span className="image-enlarge" aria-hidden="true">⤢</span></button><div className="gallery-thumbnails">{images.slice(1).map((item, thumbnailIndex) => <button className="gallery-thumbnail" type="button" key={item.src} aria-label={`Enlarge ${item.alt}`} onClick={event => openImage(thumbnailIndex + 1, event.currentTarget)}><Image src={item.src} alt={item.alt} fill sizes="(max-width: 700px) 30vw, 180px" /></button>)}</div><span className="gallery-count">{images.length} images</span></> : <ProjectVisual theme={theme} />}
+      {images.length ? <><button className="gallery-cover" type="button" aria-label={`Enlarge ${images[0].alt}`} onClick={event => openImage(0, event.currentTarget)}><ProjectVisual theme={theme} image={images[0]} /><span className="image-enlarge" aria-hidden="true">⤢</span></button><div className="gallery-thumbnails">{images.slice(1).map((item, thumbnailIndex) => <button className="gallery-thumbnail" type="button" key={item.src} aria-label={`Enlarge ${item.alt}`} onClick={event => openImage(thumbnailIndex + 1, event.currentTarget)}><Image src={item.src} alt={item.alt} fill sizes="(max-width: 700px) 30vw, 180px" /></button>)}</div><span className="gallery-count">{images.length} images</span></> : <div className="gallery-placeholder"><ProjectPlaceholder /></div>}
     </div>
     <dialog ref={viewerRef} className="image-lightbox" aria-labelledby="image-viewer-title" onCancel={event => event.stopPropagation()} onClose={event => {
       event.stopPropagation();

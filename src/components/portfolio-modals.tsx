@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { ProjectPlaceholder } from "@/components/project-placeholder";
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { projects } from "@/lib/portfolio";
 import { TechStack } from "./tech-stack";
@@ -23,11 +24,11 @@ function ProjectActions({ project }: { project: (typeof projects)[number] }) {
 }
 
 function ProjectDetail({ project }: { project: (typeof projects)[number] }) {
-  return <div className="project-detail-layout"><div className={`project-detail-grid ${project.images.length ? "" : "project-detail-text"}`}>{project.images.length > 0 && <ProjectGallery name={project.name} theme={project.theme} images={project.images} />}<article className="project-detail-copy"><p className="modal-project-meta">{project.category}{project.year && ` / ${project.year}`}</p><section><h3>What it is</h3><p>{project.description}</p>{project.brief && <p>{project.brief}</p>}</section>{project.slug === "skills-mds" ? <SkillsMD /> : <>{project.features.length > 0 && <section><h3>Features</h3><ul className="feature-list">{project.features.map(feature => <li key={feature}>{feature}</li>)}</ul></section>}{(project.approach || project.tools.length > 0) && <section><h3>Implementation</h3>{project.approach && <p>{project.approach}</p>}<div className="skills">{project.tools.map(tool => <span key={tool}>{tool}</span>)}</div></section>}</>}<ProjectActions project={project} /></article></div></div>;
+  return <div className="project-detail-layout"><div className="project-detail-grid"><ProjectGallery name={project.name} theme={project.theme} images={project.images} /><article className="project-detail-copy"><p className="modal-project-meta">{project.category}{project.year && ` / ${project.year}`}</p><section><h3>What it is</h3><p>{project.description}</p>{project.brief && <p>{project.brief}</p>}</section>{project.slug === "skills-mds" ? <SkillsMD /> : <>{project.features.length > 0 && <section><h3>Features</h3><ul className="feature-list">{project.features.map(feature => <li key={feature}>{feature}</li>)}</ul></section>}{(project.approach || project.tools.length > 0) && <section><h3>Implementation</h3>{project.approach && <p>{project.approach}</p>}<div className="skills">{project.tools.map(tool => <span key={tool}>{tool}</span>)}</div></section>}</>}<ProjectActions project={project} /></article></div></div>;
 }
 
 function ProjectCollection({ onOpen }: { onOpen: (slug: string, opener: HTMLButtonElement) => void }) {
-  return <div className="modal-project-list">{projects.map(project => <button key={project.slug} type="button" className={`home-project-row ${project.images.length ? "" : "home-project-row-text"}`} aria-label={`View ${project.name} project details`} aria-haspopup="dialog" onClick={event => onOpen(project.slug, event.currentTarget)}>{project.images.length > 0 && <span className="home-project-preview"><Image src={project.images[0].src} alt={project.images[0].alt} fill sizes="(max-width: 480px) calc(100vw - 76px), (max-width: 700px) 120px, 170px" />{project.images.length > 1 && <span className="home-image-count" aria-hidden="true">+{project.images.length - 1}</span>}</span>}<span className="home-project-copy"><span className="home-project-title">{project.name}</span><span className="home-project-description">{project.summary}</span><span className="home-project-tools">{project.tools.slice(0, 3).join(" · ")}</span></span></button>)}</div>;
+  return <div className="modal-project-list">{projects.map(project => <button key={project.slug} type="button" className="home-project-row" aria-label={`View ${project.name} project details`} aria-haspopup="dialog" onClick={event => onOpen(project.slug, event.currentTarget)}>{project.images.length > 0 ? <span className="home-project-preview"><Image src={project.images[0].src} alt={project.images[0].alt} fill sizes="(max-width: 480px) calc(100vw - 76px), (max-width: 700px) 120px, 170px" />{project.images.length > 1 && <span className="home-image-count" aria-hidden="true">+{project.images.length - 1}</span>}</span> : <span className="home-project-preview"><ProjectPlaceholder /></span>}<span className="home-project-copy"><span className="home-project-title">{project.name}</span><span className="home-project-description">{project.summary}</span><span className="home-project-tools">{project.tools.slice(0, 3).join(" · ")}</span></span></button>)}</div>;
 }
 
 export function PortfolioModals({ children }: { children: ReactNode }) {
@@ -42,7 +43,6 @@ export function PortfolioModals({ children }: { children: ReactNode }) {
   const isOpen = selection !== null;
   const project = selection?.type === "projects" ? projects.find(item => item.slug === selection.slug) : undefined;
   const detailProject = projects.find(item => item.slug === detailSlug);
-  const compact = selection?.type === "projects" && project?.images.length === 0;
   const collection = selection?.type === "project-list" || selection?.type === "stack" || selection?.type === "credentials";
   const title = project ? project.name : selection?.type === "stack" ? "Technologies" : selection?.type === "credentials" ? "Certificates & Achievements" : "Projects";
 
@@ -70,7 +70,7 @@ export function PortfolioModals({ children }: { children: ReactNode }) {
 
   return <ModalContext.Provider value={(next, opener) => { openerRef.current = opener; setDetailSlug(null); setSelection(next); }}>
     {children}
-    <dialog ref={dialogRef} className={`portfolio-modal ${compact ? "compact-modal" : ""} ${collection ? "collection-modal" : ""} ${selection?.type === "project-list" ? "project-list-modal" : ""}`} aria-labelledby="modal-title" onClose={event => { if (event.target !== event.currentTarget) return; setDetailSlug(null); setSelection(null); openerRef.current?.focus(); }} onClick={event => {
+    <dialog ref={dialogRef} className={`portfolio-modal ${collection ? "collection-modal" : ""} ${selection?.type === "project-list" ? "project-list-modal" : ""}`} aria-labelledby="modal-title" onClose={event => { if (event.target !== event.currentTarget) return; setDetailSlug(null); setSelection(null); openerRef.current?.focus(); }} onClick={event => {
       if (event.target !== event.currentTarget) return;
       const bounds = event.currentTarget.getBoundingClientRect();
       if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) event.currentTarget.close();
@@ -82,7 +82,7 @@ export function PortfolioModals({ children }: { children: ReactNode }) {
         {selection.type === "credentials" && <CredentialList />}
       </div></>}
     </dialog>
-    <dialog ref={detailDialogRef} className={`portfolio-modal ${detailProject?.images.length === 0 ? "compact-modal" : ""}`} aria-labelledby="project-detail-title" onClose={event => { if (event.target !== event.currentTarget) return; setDetailSlug(null); detailOpenerRef.current?.focus(); }} onClick={event => {
+    <dialog ref={detailDialogRef} className="portfolio-modal" aria-labelledby="project-detail-title" onClose={event => { if (event.target !== event.currentTarget) return; setDetailSlug(null); detailOpenerRef.current?.focus(); }} onClick={event => {
       if (event.target !== event.currentTarget) return;
       const bounds = event.currentTarget.getBoundingClientRect();
       if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) event.currentTarget.close();
