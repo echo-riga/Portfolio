@@ -5,6 +5,7 @@ export const portfolio = {
   role: "Full Stack Developer",
   location: "Pasig, Philippines",
   email: "rigaecho@gmail.com",
+  resumeUrl: "/Jericho%20Riga%20Resume.pdf",
   githubUsername: "echo-riga",
   linkedinUrl: "https://www.linkedin.com/in/jericho-riga-800160395/",
   headline: "Thoughtful design.\nPurposeful code.",
