@@ -4,7 +4,7 @@ export const portfolio = {
   initials: "JR",
   role: "Full Stack Developer",
   location: "Pasig, Philippines",
-  email: "hello@example.com",
+  email: "rigaecho@gmail.com",
   githubUsername: "echo-riga",
   linkedinUrl: "https://www.linkedin.com/in/jericho-riga-800160395/",
   headline: "Thoughtful design.\nPurposeful code.",
@@ -34,14 +34,14 @@ export const experiences = [
 export const education = { role: "Student", school: "Pamantasan ng Lungsod ng Pasig", period: "Present" };
 
 export const techGroups = [
-  { name: "Languages", skills: ["TypeScript", "JavaScript", "Python", "Java", "SQL"] },
-  { name: "Frontend & Apps", skills: ["Next.js", "React", "React Native", "Expo", "Redux", "Tailwind CSS", "MUI", "Electron", "WinForms"] },
+  { name: "Languages", skills: ["TypeScript", "JavaScript", "Python", "Java", "VB.NET", "PHP", "SQL"] },
+  { name: "Frontend & Apps", skills: ["Next.js", "React", "React Native", "Expo", "Redux", "Tailwind CSS", "MUI", "Electron", "WinForms", "JavaFX"] },
   { name: "Backend & APIs", skills: ["Node.js", "Express.js", "Flask", ".NET Framework", "Socket.io", "REST APIs"] },
   { name: "Databases & Storage", skills: ["PostgreSQL", "MongoDB", "MySQL", "SQLite", "Redis", "Neon", "IndexedDB"] },
   { name: "AI & Integrations", skills: ["Gemini API", "Groq API", "MCP", "Google Drive API", "Google Maps API", "Google Forms", "Cloudinary", "Resend"] },
   { name: "Data & Machine Learning", skills: ["pandas", "NumPy", "scikit-learn", "TensorFlow", "joblib"] },
   { name: "Authentication", skills: ["JWT", "OAuth 2.0", "Better Auth", "Neon Auth"] },
-  { name: "Development Tools", skills: ["Git", "GitHub", "Docker", "Playwright", "Postman"] },
+  { name: "Development Tools", skills: ["Git", "GitHub", "Docker", "Playwright", "Detox", "Postman"] },
   { name: "Cloud & Deployment", skills: ["AWS", "Microsoft Azure", "Vercel", "Railway"] },
 ];
 
@@ -149,17 +149,19 @@ export const projects = [
       "PostgreSQL",
       "Cloudinary",
       "Resend",
+      "Groq API",
       "Redis"
     ],
     "features": [
       "Public company, project, service, and client pages",
       "Job listings and applications with CV submission",
       "Contact inquiries and email notifications",
+      "Groq-powered customer service chatbot that retrieves company content from admin APIs to answer visitor inquiries",
       "Admin management of projects, galleries, services, clients, and jobs",
       "Drag-and-drop content ordering",
       "Authenticated admin access and rate-limited endpoints"
     ],
-    "approach": "Built as two Next.js applications: the public website and an admin app backed by PostgreSQL. The website consumes content from the admin API. Signed Cloudinary uploads send images directly from the browser, while Resend delivers inquiry and application notifications. Upstash Redis applies rate limits to forms, login, and uploads. Public content responses use a short CDN cache, and admin requests bypass it to show current edits.",
+    "approach": "Built as two Next.js applications: the public website and an admin app backed by PostgreSQL. The website consumes content from the admin API. The Groq-powered chatbot retrieves project, service, job, and client content from those APIs to answer visitor inquiries. Signed Cloudinary uploads send images directly from the browser, while Resend delivers inquiry and application notifications. Upstash Redis applies rate limits to forms, login, uploads, and chatbot requests. Public content responses use a short CDN cache, and admin requests bypass it to show current edits.",
     "liveUrl": "https://new.loxon.com.ph",
     "sourceUrl": "https://github.com/echo-riga/Loxon-Website",
     "sourceIsExample": false
