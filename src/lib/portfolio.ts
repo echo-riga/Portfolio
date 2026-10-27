@@ -49,7 +49,7 @@ export const projects = [
   {
     "slug": "leaprs",
     "name": "LEAPRS",
-    "summary": "Capacity development requests, timelines, and budget monitoring.",
+    "summary": "Capacity development requests, approvals, budgets, and reporting.",
     "category": "Training requisition & monitoring system",
     "year": "2026",
     "theme": "leaprs",
@@ -94,7 +94,11 @@ export const projects = [
       "Neon Auth",
       "Gemini API",
       "Groq API",
-      "Google APIs",
+      "Google Drive API",
+      "Google Forms API",
+      "IndexedDB",
+      "OAuth 2.0",
+      "Vercel Cron",
       "MCP"
     ],
     "features": [
@@ -103,10 +107,13 @@ export const projects = [
       "Request timelines with milestones, blockers, responses, stop and resume controls, reopening, and inactivity reminders",
       "Budget validation and one-time deductions, with analytics, PDF reports, and Excel monitoring exports",
       "Gemini assistant for general guidance, live request and budget answers, and editable drafts from photos, files, or prompts",
-      "Resumable Google Drive attachments and In-House Google Forms evaluations with Groq-powered summaries",
+      "Background Google Drive uploads with resumable transfers, retry, and recovery in the same browser",
+      "Drive ownership transfers that preserve file links and evaluation responses, where Google permits",
+      "Scheduled attachment cleanup that preserves files still referenced by current or archived records",
+      "In-House Google Forms evaluations with Groq-powered feedback summaries",
       "In-app and email notifications, audit logs, record archiving, and OAuth-secured MCP access for external AI apps"
     ],
-    "approach": "Built with Next.js, TypeScript, MUI, PostgreSQL, and Drizzle ORM. Neon Auth and server-side role checks protect portal actions and MCP tools, while Google Drive and Forms use OAuth 2.0. An IndexedDB-backed queue handles resumable uploads with retry and recovery. Gemini powers grounded assistance and activity-design extraction, while Groq summarizes written evaluation feedback.",
+    "approach": "Built with Next.js, TypeScript, MUI, and Drizzle ORM on Neon PostgreSQL. Neon Auth and server-side role checks protect portal actions and OAuth-secured MCP tools. Browser uploads retain files and resumable checkpoints in IndexedDB. PostgreSQL stores shared Drive migration checkpoints and cleanup jobs; server processing and Vercel Cron retry cleanup after checking live references. Drive ownership transfers preserve file IDs instead of copying uploads. Gemini provides live-data assistance and activity-design extraction, while Groq summarizes evaluation feedback.",
     "liveUrl": "https://leaprs-v2.vercel.app",
     "sourceUrl": "https://github.com/echo-riga/LEAPRSv2",
     "sourceIsExample": false
@@ -125,15 +132,11 @@ export const projects = [
     },
     {
         "src": "/projects/loxon-project-detail.png",
-        "alt": "Loxon public website project details for Marco Polo Hotel"
+        "alt": "Loxon public website project details for EDSA Shangri-La"
     },
     {
         "src": "/projects/loxon-admin-projects.png",
         "alt": "Loxon admin project management with search, filters, ordering, and editing controls"
-    },
-    {
-        "src": "/projects/loxon-admin-submissions.png",
-        "alt": "Loxon admin contact submissions with private details blurred"
     }
 ],
     "description": "A public website and separate admin platform for Loxon Philippines, Inc., an engineering and construction company.",
@@ -255,28 +258,40 @@ export const projects = [
   "sourceIsExample": false
 },
 {
-  "slug": "printing-services-pos",
-  "name": "Printing Services POS",
-  "summary": "Tablet checkout, sales monitoring, and expense tracking for a print shop.",
+  "slug": "pos",
+  "name": "POS",
+  "summary": "Offline tablet checkout, sales monitoring, and expense tracking.",
   "category": "Tablet point-of-sale",
   "year": "2026",
   "theme": "skills",
   "images": [
     {
-      "src": "/projects/pos-order.png",
-      "alt": "Printing Services POS order screen with service categories, custom pricing, and a shopping cart"
+      "src": "/projects/pos-order.jpg",
+      "alt": "POS order screen with product categories, item tiles, and a shopping cart"
     },
     {
-      "src": "/projects/pos-checkout.png",
-      "alt": "Printing Services POS checkout screen with cash entry, payment options, and amount due"
+      "src": "/projects/pos-checkout.jpg",
+      "alt": "POS checkout screen with order summary, cash entry keypad, and amount due"
+    },
+    {
+      "src": "/projects/pos-dashboard.jpg",
+      "alt": "POS dashboard showing revenue, expenses, net profit, sales, payment methods, and backup controls"
+    },
+    {
+      "src": "/projects/pos-product-editor.jpg",
+      "alt": "POS product editor with category name, product name, and color options"
+    },
+    {
+      "src": "/projects/pos-transaction-detail.jpg",
+      "alt": "POS transaction details showing payment method, items sold, prices, and total revenue"
     }
   ],
-  "description": "A fully offline tablet point-of-sale system built for a printing services client to price custom jobs, process payments, and monitor business performance.",
-  "brief": "Cashiers browse print-service categories, enter the quantity and unit price for each job, complete checkout, and review detailed transaction records.",
+  "description": "A fully offline tablet point-of-sale system for managing products, processing payments, and monitoring business performance.",
+  "brief": "Cashiers browse product categories, enter item quantities and unit prices, complete checkout, and review detailed transaction records.",
   "tools": ["React Native", "Expo", "TypeScript", "React Native Paper", "Expo SQLite", "Zustand"],
   "features": [
     "Touch-friendly ordering with category, subcategory, and product tiles",
-    "Custom quantity and unit pricing for variable-cost printing services",
+    "Flexible item quantities and unit pricing",
     "Cash and configurable payment methods with change calculation and optional reference numbers",
     "Product management and item-level transaction history with date filters",
     "Revenue, orders, daily sales, top items, and payment breakdown analytics",
