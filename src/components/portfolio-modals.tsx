@@ -31,8 +31,8 @@ function ProjectCollection({ onOpen }: { onOpen: (slug: string, opener: HTMLButt
   return <div className="modal-project-list">{projects.map(project => <button key={project.slug} type="button" className="home-project-row" aria-label={`View ${project.name} project details`} aria-haspopup="dialog" onClick={event => onOpen(project.slug, event.currentTarget)}>{project.images.length > 0 ? <span className="home-project-preview"><Image src={project.images[0].src} alt={project.images[0].alt} fill sizes="(max-width: 480px) calc(100vw - 76px), (max-width: 700px) 120px, 170px" />{project.images.length > 1 && <span className="home-image-count" aria-hidden="true">+{project.images.length - 1}</span>}</span> : <span className="home-project-preview"><ProjectPlaceholder /></span>}<span className="home-project-copy"><span className="home-project-title">{project.name}</span><span className="home-project-description">{project.summary}</span><span className="home-project-tools">{project.tools.slice(0, 3).join(" · ")}</span></span></button>)}</div>;
 }
 
-export function PortfolioModals({ children }: { children: ReactNode }) {
-  const [selection, setSelection] = useState<Selection | null>(null);
+export function PortfolioModals({ children, initialProjectSlug, initialProjectList = false }: { children: ReactNode; initialProjectSlug?: string; initialProjectList?: boolean }) {
+  const [selection, setSelection] = useState<Selection | null>(() => initialProjectSlug && projects.some(project => project.slug === initialProjectSlug) ? { type: "projects", slug: initialProjectSlug } : initialProjectList ? { type: "project-list" } : null);
   const [detailSlug, setDetailSlug] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const detailDialogRef = useRef<HTMLDialogElement>(null);

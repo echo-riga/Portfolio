@@ -1,12 +1,10 @@
-import Link from "next/link";
-import Image from "next/image";
-import { ProjectPlaceholder } from "@/components/project-placeholder";
-import { ModalTrigger, PortfolioModals } from "@/components/portfolio-modals";
-import { portfolio, projects } from "@/lib/portfolio";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { redirect } from "next/navigation";
+import { projects } from "@/lib/portfolio";
 
-export const metadata = { title: "Projects", description: "Selected projects, previews, features, and implementation details." };
-
-export default function ProjectsPage() {
-  return <PortfolioModals><a className="skip-link" href="#main">Skip to content</a><main id="main" className="projects-page"><header className="projects-page-header"><div className="projects-page-topbar"><Link className="back-home" href="/">← {portfolio.name}</Link><ThemeToggle /></div><h1>Projects</h1></header><div className="project-collection">{projects.map(project => <ModalTrigger key={project.slug} className="collection-row" selection={{ type: "projects", slug: project.slug }} label={`Open ${project.name} project`}><span className="collection-copy"><span className="collection-category">{project.category}{project.year && ` / ${project.year}`}</span><span className="collection-title">{project.name}</span><span className="collection-description">{project.description}</span>{project.tools.length > 0 && <span className="collection-tools">{project.tools.join(" / ")}</span>}</span>{project.images.length > 0 ? <span className="collection-images">{project.images.slice(0, 3).map((image, index) => <span className="collection-image" key={image.src}><Image src={image.src} alt={image.alt} fill sizes="(max-width: 700px) 30vw, 240px" />{index === 2 && project.images.length > 3 && <span className="more-images" aria-hidden="true">+{project.images.length - 3}</span>}</span>)}</span> : <span className="collection-placeholder"><ProjectPlaceholder /></span>}</ModalTrigger>)}</div></main></PortfolioModals>;
+export default async function ProjectsPage({ searchParams }: { searchParams: Promise<{ project?: string | string[] }> }) {
+  const { project } = await searchParams;
+  if (typeof project === "string" && projects.some(item => item.slug === project)) {
+    redirect(`/?project=${encodeURIComponent(project)}`);
+  }
+  redirect("/?view=projects");
 }

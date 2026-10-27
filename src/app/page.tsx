@@ -11,9 +11,11 @@ import { ThemeToggle } from "@/components/theme-toggle";
 
 export const revalidate = 3600;
 
-export default async function Home() {
+export default async function Home({ searchParams }: { searchParams: Promise<{ project?: string | string[]; view?: string | string[] }> }) {
+  const { project, view } = await searchParams;
+  const initialProjectSlug = typeof project === "string" && projects.some(item => item.slug === project) ? project : undefined;
   const activity = await getContributions();
-  return <PortfolioModals><a className="skip-link" href="#main">Skip to content</a><main id="main" className="dashboard">
+  return <PortfolioModals initialProjectSlug={initialProjectSlug} initialProjectList={view === "projects"}><a className="skip-link" href="#main">Skip to content</a><main id="main" className="dashboard">
     <div className="overview-grid">
       <section className="profile" aria-labelledby="profile-title">
         <div className="profile-header"><div className="identity"><div className="profile-name"><h1 id="profile-title">{portfolio.name}</h1><div className="profile-meta"><p className="role">{portfolio.role}</p><p className="location">{portfolio.location}</p></div></div></div><div className="profile-actions"><div className="profile-links" aria-label="Contact and social links"><a href={`https://github.com/${portfolio.githubUsername}`} target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" data-tooltip="GitHub"><SocialIcon name="github" /></a>{portfolio.linkedinUrl ? <a href={portfolio.linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" data-tooltip="LinkedIn"><SocialIcon name="linkedin" /></a> : <span className="inactive-social" role="img" aria-label="LinkedIn — not configured" data-tooltip="LinkedIn — not configured"><SocialIcon name="linkedin" /></span>}<a href={`mailto:${portfolio.email}`} aria-label={`Email ${portfolio.name}`} data-tooltip="Email"><SocialIcon name="email" /></a></div><ThemeToggle /></div></div>
