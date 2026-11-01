@@ -43,6 +43,7 @@ export const techGroups = [
   { name: "Data & Machine Learning", skills: ["pandas", "NumPy", "scikit-learn", "TensorFlow", "joblib"] },
   { name: "Authentication", skills: ["JWT", "OAuth 2.0", "Better Auth", "Neon Auth"] },
   { name: "Development Tools", skills: ["Git", "GitHub", "Docker", "Playwright", "Detox", "Postman"] },
+  { name: "Cybersecurity", skills: ["Kali Linux", "Nmap", "Wireshark", "Gobuster", "CyberChef"] },
   { name: "Cloud & Deployment", skills: ["AWS", "Microsoft Azure", "Vercel", "Railway"] },
 ];
 
